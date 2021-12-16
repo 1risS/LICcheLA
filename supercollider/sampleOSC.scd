@@ -4,7 +4,7 @@ p=Platform.userHomeDir +/+ "/LICcheLA/palabrasGlen/agua.wav";
 b=Buffer.read(s,p);
 )
 
-~samples = PathName.new(Platform.userHomeDir +/+ "/LICcheLA/palabrasGlen").files;
+~samples = PathName.new(Platform.userHomeDir +/+ "/LICcheLA/palabrasGlen/palabrasFx/").files;
 ~buffers = ~samples.collect { |sample| Buffer.read(s, sample.fullPath) };
 // mezcla lista de buffers
 ~buffers = ~buffers.scramble;

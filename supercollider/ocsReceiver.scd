@@ -1,3 +1,12 @@
+ServerOptions.devices
+Server.default.options.device = "Built-in Output"
+s.options.outDevice = "Built-in Output"
+
+(
+s.options.outDevice = "Built-in Output";
+s.options.sampleRate = 48000;
+)
+
 s.boot;
 
 // printea el puerto q escucha los msjs
@@ -16,7 +25,7 @@ SynthDef(\sample, { |out=0, buf=0, pan=0, amp=1|
 
 // Carga samples y buffers
 (
-~samples = PathName.new(Platform.userHomeDir +/+ "/LICcheLA/palabrasGlen").files;
+~samples = PathName.new(Platform.userHomeDir +/+ "/LICcheLA/palabrasGlen/palabrasFx/").files;
 ~buffers.do { |buf| buf.free };
 ~buffers = ~samples.collect { |sample| Buffer.read(s, sample.fullPath) };
 
