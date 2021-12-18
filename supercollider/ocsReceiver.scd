@@ -3,7 +3,7 @@ Server.default.options.device = "Built-in Output"
 s.options.outDevice = "Built-in Output"
 
 (
-s.options.outDevice = "Built-in Output";
+s.options.outDevice = "AudioBox USB";
 s.options.sampleRate = 48000;
 )
 
@@ -25,7 +25,7 @@ SynthDef(\sample, { |out=0, buf=0, pan=0, amp=1|
 
 // Carga samples y buffers
 (
-~samples = PathName.new(Platform.userHomeDir +/+ "/LICcheLA/palabrasGlen/palabrasFx/").files;
+~samples = PathName.new(Platform.userHomeDir +/+ "/LICcheLA/palabrasFx/").files;
 ~buffers.do { |buf| buf.free };
 ~buffers = ~samples.collect { |sample| Buffer.read(s, sample.fullPath) };
 
@@ -75,6 +75,9 @@ OSCdef(\id_x_y, { |msg|
 
   numPoints = (msg.size / 3).trunc;
   psDict = ();
+
+
+  //"msg: %".format(msg).postln;
 
   numPoints.do { |j|
     var x, y, u, v, t, dist, circ;
@@ -151,4 +154,8 @@ m.sendMsg('/id_x_y',
   8, 0.5, 0.5,
   9, 0.5, 0.5,
 );
+)
+
+(
+m.sendMsg('/id_x_y', 1, 0.01259833, 0.1704291, 2, 0.1180702, 0.006612175, 3, 0.4778707, 0.002194649, 4, 0.210063, 0.1046326, 5, 0.1020269, 0.3518159);
 )
